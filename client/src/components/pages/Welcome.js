@@ -12,6 +12,7 @@ function Welcome() {
                     <p className="lead">Track your rounds, find new courses, and more!</p>
                     <p>Login or Register below to get started.</p>
                 </div>
+                
                 <div className="container">
                     <LoginForm />
                 </div>
