@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import API from "../utils/API";
 // import API from "./utils/API";
 
 class CourseSearchForm extends Component {
     // Setting the component's initial state
   state = {
-    firstName: "",
-    lastName: ""
+    zipcode: "",
+    courses: []
   };
 
   handleInputChange = event => {
@@ -22,12 +23,10 @@ class CourseSearchForm extends Component {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     event.preventDefault();
 
-    // Alert the user their first and last name, clear `this.state.firstName` and `this.state.lastName`, clearing the inputs
-    alert(`Hello ${this.state.firstName} ${this.state.lastName}`);
-    this.setState({
-      firstName: "",
-      lastName: ""
-    });
+    // alert(`Hello ${this.state.zipcode}`);
+    API.getCourses(this.state.zipcode)
+        .then(res => this.setState({courses: res.data}))
+        .catch(err => console.log(err));
   };
 
   render() {
@@ -37,19 +36,13 @@ class CourseSearchForm extends Component {
         
         <form className="form">
           <input
-            value={this.state.firstName}
-            name="firstName"
+            value={this.state.zipcode}
+            name="zipcode"
             onChange={this.handleInputChange}
             type="text"
-            placeholder="First Name"
+            placeholder="Enter Zipcode"
           />
-          <input
-            value={this.state.lastName}
-            name="lastName"
-            onChange={this.handleInputChange}
-            type="text"
-            placeholder="Last Name"
-          />
+          
           <button onClick={this.handleFormSubmit}>Submit</button>
         </form>
       </div>
