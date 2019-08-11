@@ -10,6 +10,7 @@ class CourseSearch extends Component {
                     {/* <h1 className="display-4">Welcome to</h1> */}
                     <img src ="/images/logobig.png" width="600" height="100" />
                     <p className="lead">Course Search</p>
+                    <p>Enter a zipcode or City and State to search for nearby courses.</p>
                     
                 </div>
                 
